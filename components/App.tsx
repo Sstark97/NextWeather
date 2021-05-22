@@ -54,7 +54,7 @@ export function App () {
                   setWeatherIcons(localIcons);
               });
         
-    })
+    },[])
 
     const api_url:string = 'https://www.metaweather.com/api/'
     const api_icon:string = 'https://www.metaweather.com/static/img/weather/'

@@ -1,0 +1,10 @@
+.weatherContainer{
+    background-color: #3B324F;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    color: #FFF;
+    border-radius: 1rem;
+}
