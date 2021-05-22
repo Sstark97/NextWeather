@@ -6,6 +6,7 @@ import { Weather } from '../model/types'
 import { LocalWeather } from './LocalWeather';
 import { WeatherCard } from './WeatherCard'
 import styles from '../styles/Home.module.css';
+import global_styles from '../styles/General.module.css'
 import { v4 as uuidv4 } from 'uuid';
 
 export function App () {
@@ -78,8 +79,8 @@ export function App () {
     return (
         <>
             <LocalWeather weatherPresent = {weatherPresent} weatherIcons = {weatherIcons} city = {city} handleSearch = {handleSearch} />
-            <div className={styles.globalWeather}>
-                <div className={styles.weatherWeeks}>
+            <div className={global_styles.globalWeather}>
+                <div className={global_styles.weatherWeeks}>
                     {weather.map((w,index) => {
                     return <WeatherCard key={uuidv4()} date = {w.applicable_date} image_url = {weatherIcons[index]} min_temp = {w.min_temp} max_temp = {w.max_temp}/>
                     })}
