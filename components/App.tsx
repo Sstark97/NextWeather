@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Weather } from '../model/types'
 import { LocalWeather } from './LocalWeather';
+import { WeatherCard } from './WeatherCard'
 
 export function App () {
     let localWeather: Weather[] = []
@@ -48,8 +49,10 @@ export function App () {
                        }
 
                        localWeather.push(modifyWeather);
-                       localIcons.push(`${api_icon}${m.weather_state_abbr}.svg`)
-                  });
+                       localIcons.push(`${api_icon}${m.weather_state_abbr}.svg`);
+                    }          
+                  );
+                  setWeather(localWeather);
                   setWeatherPresent(localWeather[0]);
                   setWeatherIcons(localIcons);
               });
@@ -61,6 +64,11 @@ export function App () {
 
 
     return (
-        <LocalWeather weatherPresent = {weatherPresent} weatherIcons = {weatherIcons} city = {city} />
+        // <LocalWeather weatherPresent = {weatherPresent} weatherIcons = {weatherIcons} city = {city} />
+        <div className="d-flex w-100">
+            {weather.map((w,index) => {
+                return <WeatherCard date = {w.applicable_date} image_url = {weatherIcons[index]} min_temp = {w.min_temp} max_temp = {w.max_temp}/>
+            })}
+        </div>
     )
 }

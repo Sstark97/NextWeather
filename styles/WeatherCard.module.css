@@ -1,0 +1,15 @@
+.weatherCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #3B324F;
+    color: #FFF;
+    margin-left: 2rem;
+    padding: 1rem;
+    height: 25rem;
+}
+
+#minTemp{
+    color: #D2D1D1 ;
+}

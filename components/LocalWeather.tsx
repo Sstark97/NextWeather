@@ -1,7 +1,5 @@
 import React from 'react'; 
 import "bootstrap/dist/css/bootstrap.css";
-import axios from 'axios';
-import { useState, useEffect } from 'react';
 import { Weather, LocalWeatherProps } from '../model/types';
 import styles from '../styles/LocalWeather.module.css';
 import Image from 'next/image';

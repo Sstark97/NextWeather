@@ -16,3 +16,10 @@ export interface LocalWeatherProps{
     weatherIcons: string[],
     city: string
 }
+
+export interface WeatherCardProps {
+    date:string,
+    image_url:string,
+    min_temp:number,
+    max_temp:number
+}
