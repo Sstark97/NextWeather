@@ -2,18 +2,35 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.css";
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Weather from '../model/types'
+import { Weather } from '../model/types'
+import { LocalWeather } from './LocalWeather';
 
 export function App () {
     let localWeather: Weather[] = []
+    let weatherNow: Weather = {
+        weather_state_name:'',
+        weather_state_abbr:'',
+        applicable_date:'',
+        min_temp: 0,
+        max_temp: 0,
+        the_temp: 0,
+        wind_speed: 0,
+        wind_direction: 0,
+        air_pressure: 0,
+        humidity: 0
+    }
     let localIcons: string[] = [];
     const [weather, setWeather] = useState(localWeather);
-    const [weatherPresent, setWeatherPresent] = useState({});
+    const [weatherPresent, setWeatherPresent] = useState(weatherNow);
     const [weatherIcons, setWeatherIcons] = useState(localIcons);
+    const [city, setCity] = useState('');
 
     useEffect( () => {
          axios.get(`${api_url}/location/44418`)
-              .then(res => res.data)
+              .then(res => {
+                  setCity(res.data.title);
+                  return res.data
+                })
               .then( (data) : Weather[] => data.consolidated_weather)
               .then(w => {
                   w.forEach( m => {
@@ -23,6 +40,7 @@ export function App () {
                           applicable_date: m.applicable_date,
                           min_temp: m.min_temp,
                           max_temp: m.max_temp,
+                          the_temp: m.the_temp,
                           wind_speed: m.wind_speed,
                           wind_direction: m.wind_direction,
                           air_pressure: m.air_pressure,
@@ -33,6 +51,7 @@ export function App () {
                        localIcons.push(`${api_icon}${m.weather_state_abbr}.svg`)
                   });
                   setWeatherPresent(localWeather[0]);
+                  setWeatherIcons(localIcons);
               });
         
     })
@@ -41,5 +60,7 @@ export function App () {
     const api_icon:string = 'https://www.metaweather.com/static/img/weather/'
 
 
-    return <h1>Componente App</h1>
+    return (
+        <LocalWeather weatherPresent = {weatherPresent} weatherIcons = {weatherIcons} city = {city} />
+    )
 }
