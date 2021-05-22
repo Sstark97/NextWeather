@@ -6,6 +6,7 @@ import { Weather } from '../model/types'
 import { LocalWeather } from './LocalWeather';
 import { WeatherCard } from './WeatherCard'
 import styles from '../styles/Home.module.css';
+import { v4 as uuidv4 } from 'uuid';
 
 export function App () {
     let localWeather: Weather[] = []
@@ -26,9 +27,10 @@ export function App () {
     const [weatherPresent, setWeatherPresent] = useState(weatherNow);
     const [weatherIcons, setWeatherIcons] = useState(localIcons);
     const [city, setCity] = useState('');
+    const [citySearch, setCitySearch] = useState('/location/44418');
 
     useEffect( () => {
-         axios.get(`${api_url}/location/44418`)
+         axios.get(`${api_url}${citySearch}`)
               .then(res => {
                   setCity(res.data.title);
                   return res.data
@@ -58,20 +60,28 @@ export function App () {
                   setWeatherIcons(localIcons);
               });
         
-    },[])
+    },weather)
 
     const api_url:string = 'https://www.metaweather.com/api/'
     const api_icon:string = 'https://www.metaweather.com/static/img/weather/'
+    const api_search:string = `${api_url}location/search/?query=`
+
+    const handleSearch = async (city:string) => {
+        let toSearch = await axios.get(`${api_search}${city}`);
+        let updatedWeather = await axios.get(`${api_url}/location/${toSearch.data[0].woeid}`)
+        setCity(toSearch.data[0].title);
+        setCitySearch(`/location/${toSearch.data[0].woeid}`);
+        setWeather(updatedWeather.data.consolidated_weather);
+    }
 
 
     return (
         <>
-
-            <LocalWeather weatherPresent = {weatherPresent} weatherIcons = {weatherIcons} city = {city} />
+            <LocalWeather weatherPresent = {weatherPresent} weatherIcons = {weatherIcons} city = {city} handleSearch = {handleSearch} />
             <div className={styles.globalWeather}>
                 <div className={styles.weatherWeeks}>
                     {weather.map((w,index) => {
-                    return <WeatherCard date = {w.applicable_date} image_url = {weatherIcons[index]} min_temp = {w.min_temp} max_temp = {w.max_temp}/>
+                    return <WeatherCard key={uuidv4()} date = {w.applicable_date} image_url = {weatherIcons[index]} min_temp = {w.min_temp} max_temp = {w.max_temp}/>
                     })}
                 </div>
                 

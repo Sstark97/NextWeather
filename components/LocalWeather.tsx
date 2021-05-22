@@ -1,22 +1,41 @@
 import React from 'react'; 
+import { useRef } from 'react';
 import "bootstrap/dist/css/bootstrap.css";
 import { Weather, LocalWeatherProps } from '../model/types';
 import styles from '../styles/LocalWeather.module.css';
 import Image from 'next/image';
+import { dateFormatter } from '../model/support'
 
-export function LocalWeather({weatherPresent, weatherIcons, city} : LocalWeatherProps) {
-    const dateFormatter = (today:string) : string => {
-        var pattern = /(\d{2})\-(\d{2})\-(\d{4})/;
-        var dt = new Date(today.replace(pattern,'$3-$2-$1')).toString().substring(0,11);
-        return dt;
-    }
+export function LocalWeather({weatherPresent, weatherIcons, city, handleSearch} : LocalWeatherProps) {
+    
 
     const today:string = dateFormatter(weatherPresent.applicable_date);
+    const cityRef = useRef<HTMLInputElement>(null);
+
+    const handleSearchSon = () => {
+        if(cityRef === undefined || cityRef.current === undefined || cityRef.current === null){
+            return;
+        }
+        const city = cityRef.current?.value;
+  
+        if (city === "") {
+            return;
+        }
+  
+        if(typeof city !== 'undefined'){
+            handleSearch(city.toLowerCase());
+            cityRef.current.value = '';
+        }
+    }
 
     return (
         <div className= {styles.weatherContainer} >
+            <div className="d-flex align-items-center justify-content-center">
+                <input ref={cityRef} className="w-50" type="text" placeholder="Search a City"/>
+                <button onClick={handleSearchSon} className="btn btn-primary vw-15">Search</button>
+            </div>
             <img className="mb-5"src={weatherIcons[weatherIcons.length-1]} alt="" width="250px" height= "125px" />
-            <h1 className="mb-5">{`${weatherPresent.the_temp}ºC`}</h1>
+            <h1 className="mb-5">{`${weatherPresent.the_temp.toFixed(2)}ºC`}</h1>
             <h3 className="mb-5">{weatherPresent.weather_state_name}</h3>
             <p className="mb-3">Today  . {today} </p>
             <div className="d-flex me-1 align-items-center justify-content-center">
