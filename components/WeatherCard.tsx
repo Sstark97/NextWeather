@@ -11,10 +11,10 @@ export function WeatherCard({ date, image_url, min_temp, max_temp } : WeatherCar
     return (
         <div className={styles.weatherCard}>
 
-            {date.substring(8,date.length) === String(new Date().getDate()) ? <h2>Today</h2> : <h2> {dateFormatter(date)}</h2>}
-            <img className="mb-5"src={image_url} alt="" width="250px" height= "125px" />
-            <div className="d-flex fs-4">
-                <p className="me-2">{max_temp.toFixed(2)}ºC</p>
+            {date.substring(8,date.length) === String(new Date().getDate()) ? <h2 className="fs-6 w-100 text-center">Today</h2> : <h2 className="fs-6 w-100 text-center"> {dateFormatter(date)}</h2>}
+            <img className="mb-3"src={image_url} alt="" width="50%" height= "25.5%" />
+            <div className="d-flex mt-4 text-center">
+                <p className="me-2 w-50">{max_temp.toFixed(2)}ºC</p>
                 <p id={styles.minTemp}>{min_temp.toFixed(2)}ºC</p>
             </div>
         </div>

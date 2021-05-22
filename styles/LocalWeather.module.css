@@ -4,7 +4,8 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 15%;
+    height: 75%;
     color: #FFF;
     border-radius: 1rem;
 }
