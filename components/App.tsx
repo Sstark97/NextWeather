@@ -49,6 +49,7 @@ export function App () {
             newIcons.push(`${api_icon}${w.weather_state_abbr}.svg`);
         })
         setWeatherIcons(newIcons);
+        setWeatherPresent(newWeather[0]);
     }
 
     async function init(){
@@ -75,6 +76,7 @@ export function App () {
                 newIcons.push(`${api_icon}${m.weather_state_abbr}.svg`);
             }          
         );
+        let newWeather:Weather = newLocation[0];
 
         setWeather(newLocation);
         setWeatherPresent(newLocation[0]);

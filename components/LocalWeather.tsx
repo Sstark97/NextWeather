@@ -26,6 +26,7 @@ export function LocalWeather({weatherPresent, weatherIcons, city, handleSearch} 
             handleSearch(city.toLowerCase());
             cityRef.current.value = '';
         }
+        console.log(weatherPresent);
     }
 
     return (
