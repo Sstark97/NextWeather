@@ -21,6 +21,7 @@ export function App () {
         the_temp: 0,
         wind_speed: 0,
         wind_direction: 0,
+        wind_direction_compass: '',
         air_pressure: 0,
         humidity: 0,
         visibility: 0
@@ -83,6 +84,7 @@ export function App () {
                     the_temp: m.the_temp,
                     wind_speed: m.wind_speed,
                     wind_direction: m.wind_direction,
+                    wind_direction_compass: m.wind_direction_compass,
                     air_pressure: m.air_pressure,
                     humidity: m.humidity,
                     visibility: m.visibility
@@ -126,7 +128,12 @@ export function App () {
                     <div className = {global_styles.featuresContainer}>
                         <div className={features_styles.features}>
                             <div className="d-flex w-100 text-center">
-                                <WeatherFeaturesCard wind_speed = {weatherPresent.wind_speed}/>
+                                <WeatherFeaturesCard 
+                                    wind_speed = {weatherPresent.wind_speed}
+                                    wind_direction = {weatherPresent.wind_direction}
+                                    wind_direction_compass = {weatherPresent.wind_direction_compass}
+                                />
+
                                 <WeatherFeaturesCard humidity = {weatherPresent.humidity}/>
                             </div>
 

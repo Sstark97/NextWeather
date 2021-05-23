@@ -22,3 +22,10 @@
     height: 80%;
     padding: 1rem;
 }
+
+.navImage{
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(315deg) brightness(103%) contrast(102%);
+    margin: 0;
+    padding: 0;
+    
+}
