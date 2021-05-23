@@ -34,8 +34,7 @@ export function App () {
     const [city, setCity] = useState('');
     const [error, setError] = useState(false);
     const [citySearch, setCitySearch] = useState('/location/44418');
-    const config : AxiosRequestConfig = {headers:{'Content-Type': 'application/json'},
-        proxy: createProxyMiddleware({ target: 'https://www.metaweather.com/api/', changeOrigin: true})
+    const config : AxiosRequestConfig = {headers:{'Content-Type': 'application/json',"Access-Control-Allow-Origin" : "*"}
     
     };
 
@@ -55,8 +54,8 @@ export function App () {
 
     const handleSearch = async (city:string) => {
        try{
-        let toSearch = await axios.get(`${api_search}${city}`);
-        let updatedWeather = await axios.get(`${api_url}/location/${toSearch.data[0].woeid}`)
+        let toSearch = await axios.get(`${api_search}${city}`,config);
+        let updatedWeather = await axios.get(`${api_url}/location/${toSearch.data[0].woeid}`,config)
         let newWeather:Weather[] = updatedWeather.data.consolidated_weather;
         setCity(toSearch.data[0].title);
         setCitySearch(`/location/${toSearch.data[0].woeid}`);
@@ -74,7 +73,7 @@ export function App () {
     }
 
     async function init(){
-        let res = await axios.get(`${api_url}${citySearch}`);
+        let res = await axios.get(`${api_url}${citySearch}`,config);
         setCity(res.data.title);
         let data:Weather[] = res.data.consolidated_weather;
         let newLocation:Weather[] = [];
