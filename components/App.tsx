@@ -34,7 +34,8 @@ export function App () {
     const [city, setCity] = useState('');
     const [error, setError] = useState(false);
     const [citySearch, setCitySearch] = useState('/location/44418');
-    const config : AxiosRequestConfig = {headers:{'Content-Type': 'application/json',"Access-Control-Allow-Origin" : "*"}
+    const config : AxiosRequestConfig = {headers:{'Content-Type': 'application/json',"Access-Control-Allow-Origin" : "*"},
+        proxy: createProxyMiddleware({ target: 'https://www.metaweather.com/api/', changeOrigin: true})
     
     };
 
