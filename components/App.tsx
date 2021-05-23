@@ -7,7 +7,9 @@ import { LocalWeather } from './LocalWeather';
 import { WeatherCard } from './WeatherCard'
 import styles from '../styles/Home.module.css';
 import global_styles from '../styles/General.module.css'
+import features_styles from '../styles/WeatherFeaturesCard.module.css'
 import { v4 as uuidv4 } from 'uuid';
+import { WeatherFeaturesCard } from './WeatherFeaturesCard'
 
 export function App () {
     let weatherNow: Weather = {
@@ -95,7 +97,24 @@ export function App () {
                     return <WeatherCard key={uuidv4()} date = {w.applicable_date} image_url = {weatherIcons[index]} min_temp = {w.min_temp} max_temp = {w.max_temp}/>
                     })}
                 </div>
-                
+
+      
+                    <div className = {global_styles.featuresContainer}>
+                    <div className={features_styles.features}>
+                        <div className="d-flex">
+                            <WeatherFeaturesCard wind_speed = {weatherPresent.wind_speed}/>
+                            <WeatherFeaturesCard humidity = {weatherPresent.humidity}/>
+                        </div>
+
+                        <div className="d-flex">
+                            <WeatherFeaturesCard visibility = {weatherPresent.visibility}/>
+                            <WeatherFeaturesCard air_pressure = {weatherPresent.air_pressure}/>
+                        </div>
+                    </div>
+
+
+                    </div>
+
             </div>
         </>
     )

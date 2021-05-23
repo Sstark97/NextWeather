@@ -15,7 +15,7 @@ export function WeatherFeaturesCard({wind_speed, air_pressure, humidity, visibil
                     </h3>
 
                     <p className="fs-2">
-                        {wind_speed}mph
+                        {wind_speed.toFixed(0)}mph
                     </p>
                 </>
             )
@@ -29,7 +29,7 @@ export function WeatherFeaturesCard({wind_speed, air_pressure, humidity, visibil
                     </h3>
 
                     <p className="fs-2">
-                        {air_pressure}mb
+                        {air_pressure.toFixed(0)}mb
                     </p>
                 </>
             )
@@ -43,33 +43,35 @@ export function WeatherFeaturesCard({wind_speed, air_pressure, humidity, visibil
                     </h3>
 
                     <p className="fs-2">
-                        {visibility} miles
+                        {visibility.toFixed(1)} miles
                     </p>
                 </>
             )
         }
 
-        if(humidity){
-            return (
-                <>  
-                    <h3 id={styles.principalText}>
-                        Humidity
-                    </h3>
+        
+        return (
+            <>  
+                <h3 id={styles.principalText}>
+                    Humidity
+                </h3>
 
-                    <p className="fs-2">
-                        {humidity}%
-                    </p>
-                    <div className="progress">
-                        <div className="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style= {{width:humidity}} aria-valuenow={humidity} aria-valuemin={0} aria-valuemax={100}>25%</div>
-                    </div>
-                </>
-            )
-        }
+                <p className="fs-2">
+                    {humidity}%
+                </p>
+                <div className="progress">
+                    <div className="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style= {{width:100}} aria-valuenow={humidity} aria-valuemin={0} aria-valuemax={100}>{humidity}%</div>
+                </div>
+            </>
+        )
+        
     }
 
+    const renderFeature = renderFeatures()
+
     return (
-        <div className={styles.features}>
-            {renderFeatures()}
+        <div className={styles.featuresIndividual}>
+            {renderFeature}
         </div>
     )
 
