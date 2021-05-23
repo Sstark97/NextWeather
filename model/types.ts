@@ -8,7 +8,8 @@ export interface Weather{
     wind_speed: number,
     wind_direction: number,
     air_pressure: number,
-    humidity: number
+    humidity: number,
+    visibility: number
 }
 
 export interface LocalWeatherProps{
@@ -23,4 +24,10 @@ export interface WeatherCardProps {
     image_url:string,
     min_temp:number,
     max_temp:number
+}
+
+export interface WeatherFeaturesProps {
+    wind_speed?:number,
+    air_pressure?:number,
+    humidity?:number
 }

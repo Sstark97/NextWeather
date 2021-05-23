@@ -20,7 +20,8 @@ export function App () {
         wind_speed: 0,
         wind_direction: 0,
         air_pressure: 0,
-        humidity: 0
+        humidity: 0,
+        visibility: 0
     }
 
     const [weather, setWeather] = useState<Weather[]>([]);
@@ -69,7 +70,8 @@ export function App () {
                     wind_speed: m.wind_speed,
                     wind_direction: m.wind_direction,
                     air_pressure: m.air_pressure,
-                    humidity: m.humidity
+                    humidity: m.humidity,
+                    visibility: m.visibility
                 }
 
                 newLocation.push(modifyWeather);
