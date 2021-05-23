@@ -16,7 +16,8 @@ export interface LocalWeatherProps{
     weatherPresent: Weather,
     weatherIcons: string[],
     city: string,
-    handleSearch(city:string):void
+    handleSearch(city:string):void,
+    error?:boolean
 }
 
 export interface WeatherCardProps {

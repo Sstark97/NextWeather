@@ -6,7 +6,7 @@ import styles from '../styles/LocalWeather.module.css';
 import Image from 'next/image';
 import { dateFormatter } from '../model/support'
 
-export function LocalWeather({weatherPresent, weatherIcons, city, handleSearch} : LocalWeatherProps) {
+export function LocalWeather({weatherPresent, weatherIcons, city, handleSearch, error} : LocalWeatherProps) {
     
 
     const today:string = dateFormatter(weatherPresent.applicable_date);
@@ -26,7 +26,6 @@ export function LocalWeather({weatherPresent, weatherIcons, city, handleSearch} 
             handleSearch(city.toLowerCase());
             cityRef.current.value = '';
         }
-        console.log(weatherPresent);
     }
 
     return (

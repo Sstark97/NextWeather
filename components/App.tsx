@@ -30,6 +30,7 @@ export function App () {
     const [weatherPresent, setWeatherPresent] = useState<Weather>(weatherNow);
     const [weatherIcons, setWeatherIcons] = useState<string[]>([]);
     const [city, setCity] = useState('');
+    const [error, setError] = useState(false);
     const [citySearch, setCitySearch] = useState('/location/44418');
 
     useEffect( () => {
@@ -41,6 +42,7 @@ export function App () {
     const api_search:string = `${api_url}location/search/?query=`
 
     const handleSearch = async (city:string) => {
+       try{
         let toSearch = await axios.get(`${api_search}${city}`);
         let updatedWeather = await axios.get(`${api_url}/location/${toSearch.data[0].woeid}`)
         let newWeather:Weather[] = updatedWeather.data.consolidated_weather;
@@ -53,6 +55,9 @@ export function App () {
         })
         setWeatherIcons(newIcons);
         setWeatherPresent(newWeather[0]);
+       } catch(err) {
+           console.log(err)
+       }
     }
 
     async function init(){
@@ -90,7 +95,7 @@ export function App () {
 
     return (
         <>
-            <LocalWeather weatherPresent = {weatherPresent} weatherIcons = {weatherIcons} city = {city} handleSearch = {handleSearch} />
+            <LocalWeather weatherPresent = {weatherPresent} weatherIcons = {weatherIcons} city = {city} handleSearch = {handleSearch} error = {error}/>
             <div className={global_styles.globalWeather}>
                 <div className={global_styles.weatherWeeks}>
                     {weather.map((w,index) => {
