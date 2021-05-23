@@ -1,6 +1,7 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.css";
 import { Weather, WeatherFeaturesProps } from '../model/types';
+import styles from '../styles/WeatherFeaturesCard.module.css'
 
 
 export function WeatherFeaturesCard({wind_speed, air_pressure, humidity, visibility} :WeatherFeaturesProps) {
@@ -9,7 +10,7 @@ export function WeatherFeaturesCard({wind_speed, air_pressure, humidity, visibil
         if(wind_speed){
             return (
                 <>  
-                    <h3>
+                    <h3 id={styles.principalText}>
                         Wind Status
                     </h3>
 
@@ -23,7 +24,7 @@ export function WeatherFeaturesCard({wind_speed, air_pressure, humidity, visibil
         if(air_pressure){
             return (
                 <>  
-                    <h3>
+                    <h3 id={styles.principalText}>
                         Air Pressure
                     </h3>
 
@@ -37,7 +38,7 @@ export function WeatherFeaturesCard({wind_speed, air_pressure, humidity, visibil
         if(visibility){
             return (
                 <>  
-                    <h3>
+                    <h3 id={styles.principalText}>
                         Visibility
                     </h3>
 
@@ -51,7 +52,7 @@ export function WeatherFeaturesCard({wind_speed, air_pressure, humidity, visibil
         if(humidity){
             return (
                 <>  
-                    <h3>
+                    <h3 id={styles.principalText}>
                         Humidity
                     </h3>
 
@@ -65,5 +66,11 @@ export function WeatherFeaturesCard({wind_speed, air_pressure, humidity, visibil
             )
         }
     }
+
+    return (
+        <div className={styles.features}>
+            {renderFeatures()}
+        </div>
+    )
 
 }
