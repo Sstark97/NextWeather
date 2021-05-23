@@ -30,12 +30,14 @@ export function LocalWeather({weatherPresent, weatherIcons, city, handleSearch, 
 
     return (
         <div className= {styles.weatherContainer} >
-            <div className="d-flex align-items-center justify-content-center">
-                <input ref={cityRef} className="w-50" type="text" placeholder="Search a City"/>
-                <button onClick={handleSearchSon} className="btn btn-primary vw-15">Search</button>
+            <div className="d-flex flex-column align-items-center justify-content-center">
+                <div className="d-flex align-items-center justify-content-center">
+                    <input ref={cityRef} className="w-50" type="text" placeholder="Search a City"/>
+                    <button onClick={handleSearchSon} className="btn btn-primary vw-15">Search</button>
+                </div>
                 {error ? 
-                    <div className="alert alert-danger" role="alert">
-                        The weather of this city it's not available
+                    <div className="alert alert-secondary mt-4 w-75 p-0" role="alert">
+                        The weather it's not available
                     </div>
                     :
                     <span></span>
