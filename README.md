@@ -3,7 +3,7 @@
 ------------
 
 ## Description
-It is an application that manages the atmospheric time made in Next.js. Answer the challenge that you can find in the following DevsChallenge link: [Weather app Challenge](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv "Weather app Challenge")
+It is an application that manages the weather made in Next.js. Answer the challenge that you can find in the following DevsChallenge link: [Weather app Challenge](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv "Weather app Challenge")
 
 ------------
 
