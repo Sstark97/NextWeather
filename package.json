@@ -2,7 +2,9 @@
   "name": "next-weather",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://www.metaweather.com/api/",
+  "proxy": {
+    "*":{ "target" : "https://www.metaweather.com/api/"}
+ },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
