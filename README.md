@@ -4,7 +4,7 @@
 
 ## Description
 It is an application that manages the weather made in Next.js. Answer the challenge that you can find in the following DevsChallenge link: [Weather app Challenge](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv "Weather app Challenge"). If you want to run the web-app in
-[NextWeather](https://next-weather-lyart.vercel.app/ "NextWeather") yo must enable CORS for now.
+[NextWeather](https://next-weather-lyart.vercel.app/ "NextWeather") yo must disable CORS for now.
 
 ------------
 
