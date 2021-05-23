@@ -1,5 +1,5 @@
 .weatherContainer{
-    background-color: #3B324F;
+    background: #1E213A;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -7,4 +7,16 @@
     width: 15%;
     height: 100%;
     color: #FFF;
+}
+
+.searchInput{
+    height: 1rem;
+    background: #1E213A;
+    color: #D2D1D1 ;
+}
+
+.searchButton{
+    height: 1rem;
+    color: #FFF ;
+    background: #3C47E9;
 }

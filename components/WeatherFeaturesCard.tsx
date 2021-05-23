@@ -60,7 +60,7 @@ export function WeatherFeaturesCard({wind_speed, air_pressure, humidity, visibil
                     {humidity}%
                 </p>
                 <div className="progress">
-                    <div className="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style= {{width:100}} aria-valuenow={humidity} aria-valuemin={0} aria-valuemax={100}>{humidity}%</div>
+                    <div className="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style= {{width:humidity}} aria-valuenow={humidity} aria-valuemin={0} aria-valuemax={100}>{humidity}%</div>
                 </div>
             </>
         )

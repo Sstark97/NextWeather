@@ -102,28 +102,39 @@ export function App () {
 
     return (
         <>
-            <LocalWeather weatherPresent = {weatherPresent} weatherIcons = {weatherIcons} city = {city} handleSearch = {handleSearch} error = {error}/>
+            <LocalWeather 
+                    weatherPresent = {weatherPresent} 
+                    weatherIcons = {weatherIcons} 
+                    city = {city} handleSearch = {handleSearch} 
+                    error = {error}
+            />
+
             <div className={global_styles.globalWeather}>
                 <div className={global_styles.weatherWeeks}>
                     {weather.map((w,index) => {
-                    return <WeatherCard key={uuidv4()} date = {w.applicable_date} image_url = {weatherIcons[index]} min_temp = {w.min_temp} max_temp = {w.max_temp}/>
+                        return <WeatherCard 
+                                    key={uuidv4()} 
+                                    date = {w.applicable_date} 
+                                    image_url = {weatherIcons[index]} 
+                                    min_temp = {w.min_temp} 
+                                    max_temp = {w.max_temp}
+                                />
                     })}
                 </div>
 
-      
+                    <h2 className={global_styles.hightligths}>Today's Highlights</h2>
                     <div className = {global_styles.featuresContainer}>
-                    <div className={features_styles.features}>
-                        <div className="d-flex">
-                            <WeatherFeaturesCard wind_speed = {weatherPresent.wind_speed}/>
-                            <WeatherFeaturesCard humidity = {weatherPresent.humidity}/>
-                        </div>
+                        <div className={features_styles.features}>
+                            <div className="d-flex w-100 text-center">
+                                <WeatherFeaturesCard wind_speed = {weatherPresent.wind_speed}/>
+                                <WeatherFeaturesCard humidity = {weatherPresent.humidity}/>
+                            </div>
 
-                        <div className="d-flex">
-                            <WeatherFeaturesCard visibility = {weatherPresent.visibility}/>
-                            <WeatherFeaturesCard air_pressure = {weatherPresent.air_pressure}/>
+                            <div className="d-flex w-100 text-center">
+                                <WeatherFeaturesCard visibility = {weatherPresent.visibility}/>
+                                <WeatherFeaturesCard air_pressure = {weatherPresent.air_pressure}/>
+                            </div>
                         </div>
-                    </div>
-
 
                     </div>
 
