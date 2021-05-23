@@ -2,7 +2,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.css";
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Weather } from '../model/types'
+import { Weather, AxiosRequestConfig } from '../model/types'
 import { LocalWeather } from './LocalWeather';
 import { WeatherCard } from './WeatherCard'
 import styles from '../styles/Home.module.css';
@@ -10,6 +10,7 @@ import global_styles from '../styles/General.module.css'
 import features_styles from '../styles/WeatherFeaturesCard.module.css'
 import { v4 as uuidv4 } from 'uuid';
 import { WeatherFeaturesCard } from './WeatherFeaturesCard'
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 export function App () {
     let weatherNow: Weather = {
@@ -33,6 +34,10 @@ export function App () {
     const [city, setCity] = useState('');
     const [error, setError] = useState(false);
     const [citySearch, setCitySearch] = useState('/location/44418');
+    const config : AxiosRequestConfig = {headers:{'Content-Type': 'application/json'},
+        proxy: createProxyMiddleware({ target: 'https://www.metaweather.com/api/', changeOrigin: true})
+    
+    };
 
     useEffect( () => {
         init();   
@@ -50,8 +55,8 @@ export function App () {
 
     const handleSearch = async (city:string) => {
        try{
-        let toSearch = await axios.get(`${api_search}${city}`);
-        let updatedWeather = await axios.get(`${api_url}/location/${toSearch.data[0].woeid}`)
+        let toSearch = await axios.get(`${api_search}${city}`,config);
+        let updatedWeather = await axios.get(`${api_url}/location/${toSearch.data[0].woeid}`,config)
         let newWeather:Weather[] = updatedWeather.data.consolidated_weather;
         setCity(toSearch.data[0].title);
         setCitySearch(`/location/${toSearch.data[0].woeid}`);
@@ -69,7 +74,7 @@ export function App () {
     }
 
     async function init(){
-        let res = await axios.get(`${api_url}${citySearch}`);
+        let res = await axios.get(`${api_url}${citySearch}`,config);
         setCity(res.data.title);
         let data:Weather[] = res.data.consolidated_weather;
         let newLocation:Weather[] = [];

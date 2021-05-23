@@ -36,3 +36,31 @@ export interface WeatherFeaturesProps {
     humidity?:number,
     visibility?: number
 }
+
+export interface AxiosProxyConfig {
+    host: string;
+    port: number;
+  }
+
+  export interface AxiosRequestConfig {
+    url?: string;
+    baseURL?: string;
+    headers?: any;
+    params?: any;
+    paramsSerializer?: (params: any) => string;
+    data?: any;
+    timeout?: number;
+    withCredentials?: boolean;
+    xsrfCookieName?: string;
+    xsrfHeaderName?: string;
+    onUploadProgress?: (progressEvent: any) => void;
+    onDownloadProgress?: (progressEvent: any) => void;
+    maxContentLength?: number;
+    validateStatus?: (status: number) => boolean;
+    maxRedirects?: number;
+    httpAgent?: any;
+    httpsAgent?: any;
+    proxy?: any;
+    // custom config
+    [someOtherConfig: string]: any;
+  }

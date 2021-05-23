@@ -2,6 +2,7 @@
   "name": "next-weather",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://www.metaweather.com/api/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,6 +14,7 @@
     "bootstrap": "^5.0.1",
     "browser-env": "^3.3.0",
     "geoip-lite": "^1.4.2",
+    "http-proxy-middleware": "^2.0.0",
     "mini-css-extract-plugin": "^1.6.0",
     "next": "^10.2.2",
     "next-images": "^1.7.0",
