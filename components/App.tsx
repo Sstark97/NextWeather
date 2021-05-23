@@ -58,8 +58,8 @@ export function App () {
 
     const handleSearch = async (city:string) => {
        try{
-        let toSearch = await axios.get(`${api_search}${city}`,config);
-        let updatedWeather = await axios.get(`${api_url}/location/${toSearch.data[0].woeid}`,config)
+        let toSearch = await axios.get(`${api_search}${city}`);
+        let updatedWeather = await axios.get(`${api_url}/location/${toSearch.data[0].woeid}`)
         let newWeather:Weather[] = updatedWeather.data.consolidated_weather;
         setCity(toSearch.data[0].title);
         setCitySearch(`/location/${toSearch.data[0].woeid}`);
@@ -77,7 +77,7 @@ export function App () {
     }
 
     async function init(){
-        let res = await axios.get(`${api_url}${citySearch}`,config);
+        let res = await axios.get(`${api_url}${citySearch}`);
         setCity(res.data.title);
         let data:Weather[] = res.data.consolidated_weather;
         let newLocation:Weather[] = [];
