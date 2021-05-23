@@ -33,6 +33,13 @@ export function LocalWeather({weatherPresent, weatherIcons, city, handleSearch, 
             <div className="d-flex align-items-center justify-content-center">
                 <input ref={cityRef} className="w-50" type="text" placeholder="Search a City"/>
                 <button onClick={handleSearchSon} className="btn btn-primary vw-15">Search</button>
+                {error ? 
+                    <div className="alert alert-danger" role="alert">
+                        The weather of this city it's not available
+                    </div>
+                    :
+                    <span></span>
+                }
             </div>
             <img className="mb-5"src={weatherIcons[weatherIcons.length-1]} alt="" width="250px" height= "125px" />
             <h1 className="mb-5">{`${weatherPresent.the_temp.toFixed(2)}ºC`}</h1>

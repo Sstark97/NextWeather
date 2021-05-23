@@ -41,6 +41,12 @@ export function App () {
     const api_icon:string = 'https://www.metaweather.com/static/img/weather/'
     const api_search:string = `${api_url}location/search/?query=`
 
+    const handleManageError = () => {
+        setTimeout(() => {
+            setError(false);
+        },2000)
+    }
+
     const handleSearch = async (city:string) => {
        try{
         let toSearch = await axios.get(`${api_search}${city}`);
@@ -56,7 +62,8 @@ export function App () {
         setWeatherIcons(newIcons);
         setWeatherPresent(newWeather[0]);
        } catch(err) {
-           console.log(err)
+           setError(true);
+           handleManageError();
        }
     }
 
