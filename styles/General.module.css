@@ -1,6 +1,6 @@
 .globalWeather{
     width: 100%;
-    height: 75%;
+    height: 100%;
     /* display: flex; */
     background-color: #0C0325
 }
@@ -10,7 +10,7 @@
     width: 100%;
     height: 32.5%;
     margin-top: 5%;
-    /* margin-left: 2rem; */
+    margin-left: 2rem;
     margin-right: 2rem;
 }
 
