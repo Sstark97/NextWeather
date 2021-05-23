@@ -34,8 +34,7 @@ export function App () {
     const [city, setCity] = useState('');
     const [error, setError] = useState(false);
     const [citySearch, setCitySearch] = useState('/location/44418');
-    const config : AxiosRequestConfig = {headers:{'Content-Type': 'application/json',"Access-Control-Allow-Origin" : "*",
-    "Access-Control-Allow-Credentials": "true","Access-Control-Max-Age": "0"}
+    const config : AxiosRequestConfig = {headers:{'Content-Type': 'application/json',"Access-Control-Allow-Origin" : "*"}
     };
 
     useEffect( () => {
