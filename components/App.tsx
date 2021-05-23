@@ -127,7 +127,7 @@ export function App () {
                     <h2 className={global_styles.hightligths}>Today's Highlights</h2>
                     <div className = {global_styles.featuresContainer}>
                         <div className={features_styles.features}>
-                            <div className="d-flex w-100 text-center">
+                            <div className="d-flex w-100 text-center mt-5">
                                 <WeatherFeaturesCard 
                                     wind_speed = {weatherPresent.wind_speed}
                                     wind_direction = {weatherPresent.wind_direction}
