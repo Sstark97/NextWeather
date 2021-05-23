@@ -16,7 +16,7 @@ export function WeatherFeaturesCard({wind_speed, air_pressure, humidity, visibil
                     </h3>
 
                     <p className="fs-2">
-                        {wind_speed.toFixed(0)}mph
+                        {wind_speed.toFixed(0)} mph
                     </p>
 
                     <div className="d-flex justify-content-center">
@@ -42,7 +42,7 @@ export function WeatherFeaturesCard({wind_speed, air_pressure, humidity, visibil
                     </h3>
 
                     <p className="fs-2">
-                        {air_pressure.toFixed(0)}mb
+                        {air_pressure.toFixed(0)} mb
                     </p>
                 </>
             )
