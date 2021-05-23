@@ -29,5 +29,6 @@ export interface WeatherCardProps {
 export interface WeatherFeaturesProps {
     wind_speed?:number,
     air_pressure?:number,
-    humidity?:number
+    humidity?:number,
+    visibility?: number
 }
